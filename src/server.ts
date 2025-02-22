@@ -1,16 +1,16 @@
 import app from './app';
 import dotenv from 'dotenv';
 
-// Cargar variables de entorno
+// load environment variables
 dotenv.config();
 
-// Validar que las variables de entorno críticas estén definidas
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT ?? 3000;
+
 if (!process.env.PORT) {
-  console.warn('PORT no está definido en el archivo .env. Usando el valor por defecto: 3000');
+  console.warn('PORT is not defined in the .env file. Using default value: 3000');
 }
 
-// Iniciar el servidor y manejar errores
+// Start the server and handle errors
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 }).on('error', (err: NodeJS.ErrnoException) => {
